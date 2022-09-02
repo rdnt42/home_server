@@ -17,7 +17,7 @@ class RoomStateServiceImpl constructor(
         val response = mockRoomStateApiService.getRoomState()
         val roomState = getRoomState(response)
 
-        roomStateRepository.save(roomState)
+        roomStateRepository.save(roomState).block()
     }
 
     private fun getRoomState(response: RoomStateResponse): RoomState {
