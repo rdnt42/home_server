@@ -18,9 +18,10 @@ class RoomStateServiceImpl constructor(
         val roomState = getRoomState(response)
 
         roomStateRepository.save(roomState).block()
+
     }
 
     private fun getRoomState(response: RoomStateResponse): RoomState {
-        return RoomState(temperature = response.temperature, humidity = response.humidity)
+        return RoomState(roomTemperature = response.temperature, roomHumidity = response.humidity)
     }
 }

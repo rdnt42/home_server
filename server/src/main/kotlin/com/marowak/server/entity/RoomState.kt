@@ -1,6 +1,7 @@
 package com.marowak.server.entity
 
 import org.springframework.data.annotation.Id
+import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.mapping.Table
 
 /**
@@ -11,7 +12,9 @@ import org.springframework.data.relational.core.mapping.Table
  */
 @Table("room_states")
 data class RoomState(
-        @Id val id: Int? = null,
-        val temperature: Double,
-        val humidity: Double
+        @Id
+        @Column("room_state_id")
+        val id: Int? = null,
+        val roomTemperature: Double,
+        val roomHumidity: Double
 )
