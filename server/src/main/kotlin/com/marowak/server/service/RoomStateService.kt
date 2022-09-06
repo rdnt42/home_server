@@ -1,5 +1,8 @@
 package com.marowak.server.service
 
+import com.marowak.server.entity.RoomState
+import reactor.core.publisher.Mono
+
 /**
  * Created with IntelliJ IDEA.
  * User: marowak
@@ -7,5 +10,5 @@ package com.marowak.server.service
  * Time: 22:33
  */
 interface RoomStateService {
-    fun updateCurrentState()
+    fun updateCurrentState(): Mono<RoomState>
 }

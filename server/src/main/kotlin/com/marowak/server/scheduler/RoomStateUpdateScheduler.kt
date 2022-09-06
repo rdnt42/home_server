@@ -16,5 +16,6 @@ class RoomStateUpdateScheduler constructor(private val roomStateService: RoomSta
     @Scheduled(fixedDelay = 60000)
     fun updateRoomState() {
         roomStateService.updateCurrentState()
+            .subscribe(System.out::println)
     }
 }

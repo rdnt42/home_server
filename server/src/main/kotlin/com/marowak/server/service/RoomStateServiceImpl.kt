@@ -5,6 +5,8 @@ import com.marowak.server.repository.RoomStateRepository
 import com.marowak.server.response.RoomStateResponse
 import com.marowak.server.service.api.MockRoomStateApiService
 import org.springframework.stereotype.Service
+import reactor.core.publisher.Mono
+
 
 @Service
 class RoomStateServiceImpl constructor(
@@ -13,12 +15,11 @@ class RoomStateServiceImpl constructor(
     : RoomStateService {
 
 
-    override fun updateCurrentState() {
+    override fun updateCurrentState(): Mono<RoomState> {
         val response = mockRoomStateApiService.getRoomState()
         val roomState = getRoomState(response)
 
-        roomStateRepository.save(roomState).block()
-
+        return roomStateRepository.save(roomState)
     }
 
     private fun getRoomState(response: RoomStateResponse): RoomState {
